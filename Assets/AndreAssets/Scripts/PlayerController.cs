@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +13,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb; // Reference to the Rigidbody2D component attached to the player
     private Vector2 movement; // Stores the direction of player movement
     private bool isMovingHorizontally = true; // Flag to track if the player is moving horizontally
+
+    public int recursoRed = 0;
+
+    public int recursoBlue = 0;
 
     void Start()
     {
