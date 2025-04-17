@@ -24,8 +24,8 @@ public class RedPathController : MonoBehaviour
             Debug.LogError("Collider2D not found on RedPath!");
         }
 
-        spriteRenderer.enabled = true; // Start hidden
-        obstacleCollider.enabled = true; // Start with collider disabled
+        spriteRenderer.enabled = true;
+        obstacleCollider.enabled = true;
     }
 
     // Update is called once per frame

@@ -24,8 +24,8 @@ public class BluePathController : MonoBehaviour
             Debug.LogError("Collider2D not found on BluePath!");
         }
 
-        spriteRenderer.enabled = true; // Start hidden
-        obstacleCollider.enabled = true; // Start with collider disabled
+        spriteRenderer.enabled = true;
+        obstacleCollider.enabled = true;
     }
 
     // Update is called once per frame
