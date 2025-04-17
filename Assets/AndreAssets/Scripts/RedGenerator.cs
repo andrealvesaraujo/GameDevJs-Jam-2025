@@ -4,29 +4,55 @@ using UnityEngine;
 
 public class RedGenerator : MonoBehaviour
 {
+
+    private bool isCollidingWithPlayer = false;
+    private PlayerController player;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        
-    }
-    
-    private void OnCollisionEnter2D(Collision2D other) {
-        
-        PlayerController player = other.gameObject.GetComponent<PlayerController>();
-        if (player != null)
+        if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            player.recursoRed++;
-            Debug.Log("Oi red: " + player.recursoRed);
+            Debug.Log("Aperta Z para aumentar. E X para diminuir valor do recurso");
+            isCollidingWithPlayer = true;
+            player = other.gameObject.GetComponent<PlayerController>();
         }
         else
         {
             Debug.LogWarning("PlayerController component not found on the colliding object.");
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>() != null)
+        {
+            isCollidingWithPlayer = false;
+            player = null;
+        }
+    }
+
+    private void Update()
+    {
+        if (!isCollidingWithPlayer || player == null) return;
+
+        if (isCollidingWithPlayer && player != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                player.recursoRed++;
+                Debug.Log("recursoRed: " + player.recursoRed);
+            }
+            else if (Input.GetKeyDown(KeyCode.X))
+            {
+                player.recursoRed--;
+                Debug.Log("recursoRed: " + player.recursoRed);
+            }
         }
     }
 }

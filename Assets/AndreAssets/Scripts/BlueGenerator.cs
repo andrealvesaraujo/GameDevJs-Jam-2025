@@ -1,33 +1,58 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-public class BlueGenerator : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+    public class BlueGenerator : MonoBehaviour
     {
-        
-    }
+        private bool isCollidingWithPlayer = false;
+        private PlayerController player;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            
+        }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        
-        PlayerController player = other.gameObject.GetComponent<PlayerController>();
-        if (player != null)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            player.recursoBlue++;
-            Debug.Log("Oi blue: " + player.recursoBlue);
+            if (other.gameObject.GetComponent<PlayerController>() != null)
+            {
+                Debug.Log("Aperta Z para aumentar. E X para diminuir valor do recurso");
+                isCollidingWithPlayer = true;
+                player = other.gameObject.GetComponent<PlayerController>();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerController component not found on the colliding object.");
+            }
         }
-        else
+
+        private void OnCollisionExit2D(Collision2D other)
         {
-            Debug.LogWarning("PlayerController component not found on the colliding object.");
+            if (other.gameObject.GetComponent<PlayerController>() != null)
+            {
+                isCollidingWithPlayer = false;
+                player = null;
+            }
+        }
+
+        private void Update()
+        {
+            if (!isCollidingWithPlayer || player == null) return;
+
+            if (isCollidingWithPlayer && player != null)
+            {
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    player.recursoBlue++;
+                    Debug.Log("recursoBlue: " + player.recursoBlue);
+                }
+                else if (Input.GetKeyDown(KeyCode.X))
+                {
+                    player.recursoBlue--;
+                    Debug.Log("recursoBlue: " + player.recursoBlue);
+                }
+            }
         }
     }
-}
