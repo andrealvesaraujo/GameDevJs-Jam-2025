@@ -90,3 +90,8 @@ webgl_sharing
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+
+# TextMesh Pro
+Assets/TextMesh Pro/Documentation/
+Assets/TextMesh Pro/Examples/
+Assets/TextMesh Pro/Sprites/
