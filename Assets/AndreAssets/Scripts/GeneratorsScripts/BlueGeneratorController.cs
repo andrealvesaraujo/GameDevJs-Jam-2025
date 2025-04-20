@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueGenerator : MonoBehaviour
+public class BlueGeneratorController : MonoBehaviour
 {
     private bool isCollidingWithPlayer = false;
     private PlayerController player;
@@ -15,7 +17,7 @@ public class BlueGenerator : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            Debug.Log("Aperta Z para aumentar. E X para diminuir valor do recurso");
+            Debug.Log("Aperta Z para aumentar. E X para diminuir valor do recurso azul");
             isCollidingWithPlayer = true;
             player = other.gameObject.GetComponent<PlayerController>();
         }

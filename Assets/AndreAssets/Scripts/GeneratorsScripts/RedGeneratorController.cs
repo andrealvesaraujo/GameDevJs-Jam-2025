@@ -1,8 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class RedGenerator : MonoBehaviour
+public class RedGeneratorController : MonoBehaviour
 {
-
     private bool isCollidingWithPlayer = false;
     private PlayerController player;
 
@@ -16,7 +17,7 @@ public class RedGenerator : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            Debug.Log("Aperta Z para aumentar. E X para diminuir valor do recurso");
+            Debug.Log("Aperta Z para aumentar. E X para diminuir valor do recurso vermelho");
             isCollidingWithPlayer = true;
             player = other.gameObject.GetComponent<PlayerController>();
         }
