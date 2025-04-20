@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 87988084}
   - component: {fileID: 87988085}
   m_Layer: 0
-  m_Name: Caminho vermelho
+  m_Name: RedPath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 433882175}
   - component: {fileID: 433882176}
   m_Layer: 0
-  m_Name: Gerador Recurso Azul
+  m_Name: BlueResourceGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 493165284}
   - component: {fileID: 493165285}
   m_Layer: 0
-  m_Name: Gerador Recurso Vermelho
+  m_Name: RedResourceGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 527297544}
   - component: {fileID: 527297545}
   m_Layer: 0
-  m_Name: Obstaculo Vermelho
+  m_Name: RedObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1048,7 +1048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 640771970}
   m_Layer: 0
-  m_Name: Obstaculos
+  m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1152,7 +1152,7 @@ GameObject:
   - component: {fileID: 982789760}
   - component: {fileID: 982789759}
   m_Layer: 0
-  m_Name: Saida
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1381,7 +1381,7 @@ GameObject:
   - component: {fileID: 1243922618}
   - component: {fileID: 1243922619}
   m_Layer: 0
-  m_Name: Obstaculo Azul
+  m_Name: BlueObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1781,7 +1781,7 @@ GameObject:
   - component: {fileID: 1337709106}
   - component: {fileID: 1337709107}
   m_Layer: 0
-  m_Name: Caminho azul
+  m_Name: BluePath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1928,7 +1928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1450471919}
   m_Layer: 0
-  m_Name: Caminhos
+  m_Name: Paths
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2136,7 +2136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2146250857}
   m_Layer: 0
-  m_Name: Geradores
+  m_Name: Generators
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
