@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Public variables
-    public float speed = 5f; // The speed at which the player moves
+    public float speed = 1.5f; // The speed at which the player moves
     public bool canMoveDiagonally = true; // Controls whether the player can move diagonally
 
     // Private variables 
