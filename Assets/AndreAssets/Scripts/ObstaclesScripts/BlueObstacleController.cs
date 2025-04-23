@@ -7,7 +7,7 @@ public class BlueObstacleController : MonoBehaviour
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
     private Collider2D obstacleCollider; // Reference to the Collider2D
 
-    private const int MIN_RESOURCES_TO_HIDE = 3;
+    [SerializeField] private int MIN_RESOURCES_TO_HIDE = 3;
 
     void Start()
     {

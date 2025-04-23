@@ -4,14 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class ExitController : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    [SerializeField] private int requiredBlue = 5;
-    [SerializeField] private int requiredRed = 5;
+    private int requiredBlue = 2;
+    private int requiredRed = 2;
 
     private const int ENDING_SCENE = 2;
 
 
+    // Start is called before the first frame update
     void Start()
     {
         
@@ -25,7 +24,7 @@ public class ExitController : MonoBehaviour
         {
             Debug.Log($"Recurso blue: {player.recursoBlue} e red: {player.recursoRed}");
 
-            if(player.recursoBlue >= requiredBlue && player.recursoRed >= requiredRed){
+            if(player.recursoBlue == requiredBlue && player.recursoRed == requiredRed){
 
                 Debug.Log("Ganhou o jogo");
                 SceneManager.LoadScene(ENDING_SCENE);
