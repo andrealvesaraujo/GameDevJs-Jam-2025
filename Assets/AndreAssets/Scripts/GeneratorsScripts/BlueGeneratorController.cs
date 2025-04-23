@@ -9,10 +9,12 @@ public class BlueGeneratorController : MonoBehaviour
 
     private bool isActive = false;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>(); // Initializes the animator
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -49,6 +51,7 @@ public class BlueGeneratorController : MonoBehaviour
                 player.recursoBlue++;
                 Debug.Log("recursoBlue: " + player.recursoBlue);
                 isActive = true;
+                anim.SetBool("trigger", true); // Changes the Animator condition "trigger" to true
             }
             else
             {
@@ -58,6 +61,7 @@ public class BlueGeneratorController : MonoBehaviour
                     Debug.Log("recursoBlue: " + player.recursoBlue);
                 }
                 isActive = false;
+                anim.SetBool("trigger", false); // Changes the Animator condition "trigger" to false
             }
         }
     }
