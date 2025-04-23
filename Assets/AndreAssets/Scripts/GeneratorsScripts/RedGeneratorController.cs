@@ -7,6 +7,9 @@ public class RedGeneratorController : MonoBehaviour
     private bool isCollidingWithPlayer = false;
     private PlayerController player;
 
+    private bool isActive = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,7 @@ public class RedGeneratorController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            Debug.Log("Aperta Z para aumentar. E X para diminuir valor do recurso vermelho");
+            Debug.Log("Press Space to toggle the red resource value");
             isCollidingWithPlayer = true;
             player = other.gameObject.GetComponent<PlayerController>();
         }
@@ -40,17 +43,22 @@ public class RedGeneratorController : MonoBehaviour
     {
         if (!isCollidingWithPlayer || player == null) return;
 
-        if (isCollidingWithPlayer && player != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (!isActive)
             {
                 player.recursoRed++;
                 Debug.Log("recursoRed: " + player.recursoRed);
+                isActive = true;
             }
-            else if (Input.GetKeyDown(KeyCode.X))
+            else
             {
-                player.recursoRed--;
-                Debug.Log("recursoRed: " + player.recursoRed);
+                if (player.recursoRed > 0)
+                {
+                    player.recursoRed--;
+                    Debug.Log("recursoRed: " + player.recursoRed);
+                }
+                isActive = false;
             }
         }
     }

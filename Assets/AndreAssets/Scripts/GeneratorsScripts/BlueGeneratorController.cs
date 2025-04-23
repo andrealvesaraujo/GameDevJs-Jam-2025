@@ -7,6 +7,8 @@ public class BlueGeneratorController : MonoBehaviour
     private bool isCollidingWithPlayer = false;
     private PlayerController player;
 
+    private bool isActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,7 @@ public class BlueGeneratorController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            Debug.Log("Aperta Z para aumentar. E X para diminuir valor do recurso azul");
+            Debug.Log("Press Space to toggle the blue resource value");
             isCollidingWithPlayer = true;
             player = other.gameObject.GetComponent<PlayerController>();
         }
@@ -40,17 +42,22 @@ public class BlueGeneratorController : MonoBehaviour
     {
         if (!isCollidingWithPlayer || player == null) return;
 
-        if (isCollidingWithPlayer && player != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (!isActive)
             {
                 player.recursoBlue++;
                 Debug.Log("recursoBlue: " + player.recursoBlue);
+                isActive = true;
             }
-            else if (Input.GetKeyDown(KeyCode.X))
+            else
             {
-                player.recursoBlue--;
-                Debug.Log("recursoBlue: " + player.recursoBlue);
+                if (player.recursoBlue > 0)
+                {
+                    player.recursoBlue--;
+                    Debug.Log("recursoBlue: " + player.recursoBlue);
+                }
+                isActive = false;
             }
         }
     }

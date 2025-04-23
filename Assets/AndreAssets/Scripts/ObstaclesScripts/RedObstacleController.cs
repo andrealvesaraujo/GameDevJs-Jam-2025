@@ -3,7 +3,7 @@ using UnityEngine;
 public class RedObstacleController : MonoBehaviour
 {
     public PlayerController player; // Reference to the Player
-    private bool isVisible = false;
+    private bool isVisible = true;
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
     private Collider2D obstacleCollider; // Reference to the Collider2D
 
@@ -21,27 +21,25 @@ public class RedObstacleController : MonoBehaviour
             Debug.LogError("Collider2D not found on RedObstacle!");
         }
 
-        spriteRenderer.enabled = false; // Start hidden
-        obstacleCollider.enabled = false; // Start with collider disabled
+        spriteRenderer.enabled = true; 
+        obstacleCollider.enabled = true;
     }
 
     void Update()
     {
         if (player == null) return; // Prevent null reference errors
 
-        if (player.recursoRed >= 3 && !isVisible)
+        if (player.recursoRed >= 1 && isVisible)
         {
-            Debug.Log("Ativou");
-            spriteRenderer.enabled = true;
-            obstacleCollider.enabled = true; // Enable collider when visible
-            isVisible = true;
-        }
-        else if (player.recursoRed < 3 && isVisible)
-        {
-            Debug.Log("Desativou");
             spriteRenderer.enabled = false;
-            obstacleCollider.enabled = false; // Disable collider when hidden
+            obstacleCollider.enabled = false; 
             isVisible = false;
+        }
+        else if (player.recursoRed < 1 && !isVisible)
+        {
+            spriteRenderer.enabled = true;
+            obstacleCollider.enabled = true; 
+            isVisible = true;
         }
     }
 }
