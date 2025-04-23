@@ -326,7 +326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1505,8 +1505,9 @@ GameObject:
   - component: {fileID: 525623781}
   - component: {fileID: 525623780}
   - component: {fileID: 525623779}
+  - component: {fileID: 525623783}
   m_Layer: 5
-  m_Name: CanvasForWorld
+  m_Name: CanvasWorldUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1596,6 +1597,21 @@ RectTransform:
   m_AnchoredPosition: {x: 336, y: 189}
   m_SizeDelta: {x: 672, y: 378}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &525623783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525623778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe7bfb7bfb98d4499b401107906b093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redPanelText: {fileID: 1575188880}
+  bluePanelText: {fileID: 5906983}
+  exitDoor: {fileID: 904500958}
 --- !u!1 &527297541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,6 +2291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b6b7c36a1b6f54eb5b04fa43cab2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredBlue: 2
+  requiredRed: 2
 --- !u!1 &941481728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,7 +2970,7 @@ GameObject:
   - component: {fileID: 1248132615}
   - component: {fileID: 1248132619}
   m_Layer: 5
-  m_Name: CanvasResourceUI
+  m_Name: CanvasScreenUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3652,7 +3670,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4743,11 +4761,11 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1103771393}
+  - {fileID: 487456593}
   - {fileID: 1728622155}
+  - {fileID: 398639077}
   - {fileID: 2146250857}
   - {fileID: 640771970}
   - {fileID: 1248132618}
-  - {fileID: 941481731}
-  - {fileID: 487456593}
-  - {fileID: 398639077}
   - {fileID: 525623782}
+  - {fileID: 941481731}

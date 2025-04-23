@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class ExitController : MonoBehaviour
 {
-    private int requiredBlue = 2;
-    private int requiredRed = 2;
+    public int requiredBlue = 1;
+    public int requiredRed = 1;
 
     private const int ENDING_SCENE = 2;
 
