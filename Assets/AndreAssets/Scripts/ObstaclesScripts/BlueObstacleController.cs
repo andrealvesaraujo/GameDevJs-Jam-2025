@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BlueObstacleController : MonoBehaviour
 {
-    public PlayerController player; // Reference to the Player
+    private PlayerController player; // Reference to the Player
     private bool isVisible = true;
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
     private Collider2D obstacleCollider; // Reference to the Collider2D
@@ -11,14 +11,19 @@ public class BlueObstacleController : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         obstacleCollider = GetComponent<Collider2D>(); // Get the Collider2D component
-        
+        player = FindObjectOfType<PlayerController>(); // Auto-find player
+       
         if (spriteRenderer == null)
         {
-            Debug.LogError("SpriteRenderer not found on BlueObstacle!");
+            Debug.LogError("SpriteRenderer not found on RedObstacle!");
         }
         if (obstacleCollider == null)
         {
-            Debug.LogError("Collider2D not found on BlueObstacle!");
+            Debug.LogError("Collider2D not found on RedObstacle!");
+        }
+        if (player == null)
+        {
+            Debug.LogError("PlayerController not found in the scene!");
         }
         
         spriteRenderer.enabled = true;
