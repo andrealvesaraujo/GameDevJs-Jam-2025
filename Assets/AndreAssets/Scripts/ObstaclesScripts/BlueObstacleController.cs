@@ -7,6 +7,8 @@ public class BlueObstacleController : MonoBehaviour
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
     private Collider2D obstacleCollider; // Reference to the Collider2D
 
+    private const int MIN_RESOURCES_TO_HIDE = 3;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,13 +36,13 @@ public class BlueObstacleController : MonoBehaviour
     {
         if (player == null) return;
 
-        if (player.recursoBlue >= 1 && isVisible)
+        if (player.recursoBlue >= MIN_RESOURCES_TO_HIDE && isVisible)
         {
             spriteRenderer.enabled = false;
             obstacleCollider.enabled = false;
             isVisible = false;
         }
-        else if (player.recursoBlue < 1 && !isVisible)
+        else if (player.recursoBlue < MIN_RESOURCES_TO_HIDE && !isVisible)
         {
             spriteRenderer.enabled = true;
             obstacleCollider.enabled = true;
