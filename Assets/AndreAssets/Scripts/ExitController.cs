@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class ExitController : MonoBehaviour
 {
@@ -6,6 +8,9 @@ public class ExitController : MonoBehaviour
 
     [SerializeField] private int requiredBlue = 5;
     [SerializeField] private int requiredRed = 5;
+
+    private const int ENDING_SCENE = 2;
+
 
     void Start()
     {
@@ -23,6 +28,7 @@ public class ExitController : MonoBehaviour
             if(player.recursoBlue >= requiredBlue && player.recursoRed >= requiredRed){
 
                 Debug.Log("Ganhou o jogo");
+                SceneManager.LoadScene(ENDING_SCENE);
                 return;
             }
             
