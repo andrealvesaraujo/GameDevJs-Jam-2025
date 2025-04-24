@@ -7,7 +7,7 @@ public class ExitController : MonoBehaviour
     public int requiredBlue = 1;
     public int requiredRed = 1;
 
-    private const int ENDING_SCENE = 2;
+    // private const int ENDING_SCENE = 2;
 
 
     // Start is called before the first frame update
@@ -26,12 +26,10 @@ public class ExitController : MonoBehaviour
 
             if(player.recursoBlue == requiredBlue && player.recursoRed == requiredRed){
 
-                Debug.Log("Ganhou o jogo");
-                SceneManager.LoadScene(ENDING_SCENE);
+                Scene activeScene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(activeScene.buildIndex+1);
                 return;
-            }
-            
-            Debug.Log($"Ainda não ganhou o jogo. Precisa de {requiredBlue} blue e {requiredRed} red.");
+            }            
         }
         else
         {
