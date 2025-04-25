@@ -3,11 +3,12 @@ using UnityEngine;
 public class BlueObstacleController : MonoBehaviour
 {
     private PlayerController player; // Reference to the Player
-    [SerializeField] private bool startVisible = true;
-    private bool isVisible = true;
+    [SerializeField] private bool startVisible = false;
+    private bool isVisible = false;
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
     private Collider2D obstacleCollider; // Reference to the Collider2D
     private AudioSource audioSource; // Reference to the AudioSource component
+    private Animator anim;
 
 
     [SerializeField] private int MIN_RESOURCES_TO_HIDE = 3;
@@ -18,7 +19,12 @@ public class BlueObstacleController : MonoBehaviour
         obstacleCollider = GetComponent<Collider2D>(); // Get the Collider2D component
         player = FindObjectOfType<PlayerController>(); // Auto-find player
         audioSource = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>(); // Initializes the animator
 
+        if (anim == null)
+        {
+            Debug.LogError("Animator component not found on this GameObject!");
+        }
         if (audioSource == null)
         {
             Debug.LogError("AudioSource component not found on this GameObject!");
@@ -37,13 +43,13 @@ public class BlueObstacleController : MonoBehaviour
         }
 
         if(startVisible){
-            spriteRenderer.enabled = true;
-            obstacleCollider.enabled = true;
-            isVisible = true;
-        } else {
-            spriteRenderer.enabled = false;
             obstacleCollider.enabled = false;
+            isVisible = true;
+            anim.SetBool("toggle", false); // Changes the Animator condition "toggle" to true
+        } else {
+            obstacleCollider.enabled = true;
             isVisible = false;
+            anim.SetBool("toggle", true); // Changes the Animator condition "toggle" to true
         }
         
     }
@@ -76,28 +82,31 @@ public class BlueObstacleController : MonoBehaviour
         if(startVisible){
             if (player.recursoBlue >= MIN_RESOURCES_TO_HIDE && isVisible)
             {
-                spriteRenderer.enabled = false;
-                obstacleCollider.enabled = false;
+                obstacleCollider.enabled = true;
                 isVisible = false;
+                anim.SetBool("toggle", true); // Changes the Animator condition "toggle" to true
+
             }
             else if (player.recursoBlue < MIN_RESOURCES_TO_HIDE && !isVisible)
             {
-                spriteRenderer.enabled = true;
-                obstacleCollider.enabled = true;
+                obstacleCollider.enabled = false;
                 isVisible = true;
+                anim.SetBool("toggle", false); // Changes the Animator condition "toggle" to true
+
             }
         } else {
             if (player.recursoBlue >= MIN_RESOURCES_TO_HIDE && !isVisible)
             {
-                spriteRenderer.enabled = true;
-                obstacleCollider.enabled = true;
+                obstacleCollider.enabled = false;
                 isVisible = true;
+                anim.SetBool("toggle", false); // Changes the Animator condition "toggle" to true
+
             }
             else if (player.recursoBlue < MIN_RESOURCES_TO_HIDE && isVisible)
             {
-                spriteRenderer.enabled = false;
-                obstacleCollider.enabled = false;
+                obstacleCollider.enabled = true;
                 isVisible = false;
+                anim.SetBool("toggle", true); // Changes the Animator condition "toggle" to true
             }
         }
     }
