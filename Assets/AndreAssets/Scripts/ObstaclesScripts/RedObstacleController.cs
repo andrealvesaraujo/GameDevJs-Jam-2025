@@ -9,13 +9,20 @@ public class RedObstacleController : MonoBehaviour
     private Collider2D obstacleCollider; // Reference to the Collider2D
 
     [SerializeField] private int MIN_RESOURCES_TO_HIDE = 3;
+    private AudioSource audioSource; // Reference to the AudioSource component
+
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         obstacleCollider = GetComponent<Collider2D>(); // Get the Collider2D component
         player = FindObjectOfType<PlayerController>(); // Auto-find player
-        
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component not found on this GameObject!");
+        }        
         if (spriteRenderer == null)
         {
             Debug.LogError("SpriteRenderer not found on RedObstacle!");
@@ -37,6 +44,27 @@ public class RedObstacleController : MonoBehaviour
             spriteRenderer.enabled = false;
             obstacleCollider.enabled = false;
             isVisible = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        PlayerController player = other.gameObject.GetComponent<PlayerController>();
+
+        if (player != null)
+        {
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                Debug.LogWarning("AudioSource or AudioClip is missing!");
+            }           
+        }
+        else
+        {
+            Debug.LogWarning("PlayerController component not found on the colliding object.");
         }
     }
 
