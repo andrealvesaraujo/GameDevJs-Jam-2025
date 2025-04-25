@@ -11,10 +11,23 @@ public class RedGeneratorController : MonoBehaviour
 
     public Animator anim;
 
+    private AudioSource audioSource; // Reference to the AudioSource component
+
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>(); // Initializes the animator
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component not found on this GameObject!");
+        }
+        if (anim == null)
+        {
+            Debug.LogError("Animator component not found on this GameObject!");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -62,6 +75,14 @@ public class RedGeneratorController : MonoBehaviour
                 }
                 isActive = false;
                 anim.SetBool("trigger", false); // Changes the Animator condition "trigger" to false
+            }
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                Debug.LogWarning("AudioSource or AudioClip is missing!");
             }
         }
     }
