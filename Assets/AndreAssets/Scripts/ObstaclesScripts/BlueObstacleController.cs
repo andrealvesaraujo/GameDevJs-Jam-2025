@@ -3,6 +3,7 @@ using UnityEngine;
 public class BlueObstacleController : MonoBehaviour
 {
     private PlayerController player; // Reference to the Player
+    [SerializeField] private bool startVisible = true;
     private bool isVisible = true;
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
     private Collider2D obstacleCollider; // Reference to the Collider2D
@@ -27,26 +28,49 @@ public class BlueObstacleController : MonoBehaviour
         {
             Debug.LogError("PlayerController not found in the scene!");
         }
+
+        if(startVisible){
+            spriteRenderer.enabled = true;
+            obstacleCollider.enabled = true;
+            isVisible = true;
+        } else {
+            spriteRenderer.enabled = false;
+            obstacleCollider.enabled = false;
+            isVisible = false;
+        }
         
-        spriteRenderer.enabled = true;
-        obstacleCollider.enabled = true;
     }
 
     void Update()
     {
         if (player == null) return;
 
-        if (player.recursoBlue >= MIN_RESOURCES_TO_HIDE && isVisible)
-        {
-            spriteRenderer.enabled = false;
-            obstacleCollider.enabled = false;
-            isVisible = false;
-        }
-        else if (player.recursoBlue < MIN_RESOURCES_TO_HIDE && !isVisible)
-        {
-            spriteRenderer.enabled = true;
-            obstacleCollider.enabled = true;
-            isVisible = true;
+        if(startVisible){
+            if (player.recursoBlue >= MIN_RESOURCES_TO_HIDE && isVisible)
+            {
+                spriteRenderer.enabled = false;
+                obstacleCollider.enabled = false;
+                isVisible = false;
+            }
+            else if (player.recursoBlue < MIN_RESOURCES_TO_HIDE && !isVisible)
+            {
+                spriteRenderer.enabled = true;
+                obstacleCollider.enabled = true;
+                isVisible = true;
+            }
+        } else {
+            if (player.recursoBlue >= MIN_RESOURCES_TO_HIDE && !isVisible)
+            {
+                spriteRenderer.enabled = true;
+                obstacleCollider.enabled = true;
+                isVisible = true;
+            }
+            else if (player.recursoBlue < MIN_RESOURCES_TO_HIDE && isVisible)
+            {
+                spriteRenderer.enabled = false;
+                obstacleCollider.enabled = false;
+                isVisible = false;
+            }
         }
     }
 }

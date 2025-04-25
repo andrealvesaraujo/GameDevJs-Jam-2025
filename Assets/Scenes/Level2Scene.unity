@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ef5da39e75c5644839744250b88c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startVisible: 1
   MIN_RESOURCES_TO_HIDE: 1
 --- !u!212 &4369706
 SpriteRenderer:
@@ -587,6 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bca3a99dc31db45a29a426b5b180a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startVisible: 1
   MIN_RESOURCES_TO_HIDE: 2
 --- !u!212 &181613101
 SpriteRenderer:
@@ -1269,6 +1271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ef5da39e75c5644839744250b88c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startVisible: 1
   MIN_RESOURCES_TO_HIDE: 1
 --- !u!60 &527297545
 PolygonCollider2D:
@@ -1412,6 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ef5da39e75c5644839744250b88c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startVisible: 1
   MIN_RESOURCES_TO_HIDE: 2
 --- !u!212 &548625189
 SpriteRenderer:
@@ -2246,6 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bca3a99dc31db45a29a426b5b180a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startVisible: 1
   MIN_RESOURCES_TO_HIDE: 2
 --- !u!212 &973831522
 SpriteRenderer:
@@ -2393,6 +2398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bca3a99dc31db45a29a426b5b180a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startVisible: 1
   MIN_RESOURCES_TO_HIDE: 1
 --- !u!212 &1056429076
 SpriteRenderer:
@@ -2771,6 +2777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ef5da39e75c5644839744250b88c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startVisible: 1
   MIN_RESOURCES_TO_HIDE: 2
 --- !u!212 &1121144386
 SpriteRenderer:
@@ -2992,6 +2999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bca3a99dc31db45a29a426b5b180a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startVisible: 1
   MIN_RESOURCES_TO_HIDE: 1
 --- !u!60 &1243922619
 PolygonCollider2D:
