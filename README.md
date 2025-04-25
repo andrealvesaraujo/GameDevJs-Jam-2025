@@ -21,7 +21,17 @@ WASD / Arrow Keys: Move the robot.
 Space: Activate or deactivate totems.
 
 ## Credits
+- **Programmer**: André – Game mechanics, UI, scripting
+- **Artist**: JonnZth – Sprites (robot, totems, lab environment) and art direction
+- **Third-Party Assets**:
+  - Audio: “Explosion” by SamsterBirdies from [Freesound.org](https://freesound.org/people/SamsterBirdies/sounds/581604/) (CC0)
+  - Sprites: “Aztech Blocks by Gamertose” from the [Unity Asset Store](https://assetstore.unity.com/packages/2d/textures-materials/brick/aztech-blocks-by-gamertose-50486) (used for obstacles)
 
-Programmer: André – Game mechanics, UI, scripting
+## Licensing
+This project is licensed under the MIT License, except for third-party assets:
+- **Audio**: “Explosion” by SamsterBirdies from Freesound.org, licensed under CC0.
+- **Sprites**: “Aztech Blocks by Gamertose” from the Unity Asset Store, used under the Unity Asset Store License. Not included in this repository.
 
-Artist: JonnZth – Sprites (robot, totems, obstacles, lab environment) and art direction.
+## Dependencies
+To run this project, download the following asset:
+- “Aztech Blocks by Gamertose” from the Unity Asset Store: [https://assetstore.unity.com/packages/2d/textures-materials/brick/aztech-blocks-by-gamertose-50486].
