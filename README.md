@@ -24,12 +24,18 @@ Space: Activate or deactivate totems.
 - **Programmer**: André – Game mechanics, UI, scripting
 - **Artist**: JonnZth – Sprites (robot, totems, lab environment) and art direction
 - **Third-Party Assets**:
-  - Audio: “Explosion” by SamsterBirdies from [Freesound.org](https://freesound.org/people/SamsterBirdies/sounds/581604/) (CC0)
+  - Audios: 
+     - “Explosion” by SamsterBirdies from [Freesound.org](https://freesound.org/people/SamsterBirdies/sounds/581604/) (CC0)
+     - 'Metal Sheet Hit' by Stereo Surgeon from [Freesound.org](https://freesound.org/people/Stereo%20Surgeon/sounds/262516/)  (CC0)
+     - 'Sci-Fi_Alien_Click' by thehorsevalse from [Freesound.org](https://freesound.org/people/thehorsevalse/sounds/612386/)  (CC0)
   - Sprites: “Aztech Blocks by Gamertose” from the [Unity Asset Store](https://assetstore.unity.com/packages/2d/textures-materials/brick/aztech-blocks-by-gamertose-50486) (used for obstacles)
 
 ## Licensing
 This project is licensed under the MIT License, except for third-party assets:
-- **Audio**: “Explosion” by SamsterBirdies from Freesound.org, licensed under CC0.
+- **Audio**: 
+  - “Explosion” by SamsterBirdies from Freesound.org, licensed under CC0.
+  - 'Metal Sheet Hit' by Stereo Surgeon  from Freesound.org, licensed under CC0.
+  - 'Sci-Fi_Alien_Click' by thehorsevalse  from Freesound.org, licensed under CC0.
 - **Sprites**: “Aztech Blocks by Gamertose” from the Unity Asset Store, used under the Unity Asset Store License. Not included in this repository.
 
 ## Dependencies
