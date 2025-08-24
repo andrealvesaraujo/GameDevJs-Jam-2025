@@ -7,6 +7,9 @@ public class StartGameManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (GameTimerController.gameTimerInstance != null){
+            GameTimerController.gameTimerInstance.StartTimer();
+        }
         SceneManager.LoadScene(GAME_SCENE);
     }
 }
