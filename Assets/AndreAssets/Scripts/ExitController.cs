@@ -9,14 +9,33 @@ public class ExitController : MonoBehaviour
 
     private AudioSource audioSource; // Reference to the AudioSource component
 
+    private PlayerController player; // Reference to the Player
+
+    private SpriteRenderer spriteRenderer;
+
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        player = FindObjectOfType<PlayerController>(); // Auto-find player
+
         if (audioSource == null)
         {
             Debug.LogError("AudioSource component not found on this GameObject!");
         }
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("SpriteRenderer component not found on this GameObject!");
+        }
+        if (player == null)
+        {
+            Debug.LogError("PlayerController not found in the scene!");
+        }
+
+        spriteRenderer.color = Color.white;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -25,14 +44,14 @@ public class ExitController : MonoBehaviour
 
         if (player != null)
         {
-            if(player.recursoBlue == requiredBlue && player.recursoRed == requiredRed){
-
-                Scene activeScene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(activeScene.buildIndex+1);
-                return;
-            } else
+            if (player.recursoBlue == requiredBlue && player.recursoRed == requiredRed)
             {
-                // Play the beep error sound when requirements are not met
+                Scene activeScene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(activeScene.buildIndex + 1);
+                return;
+            }
+            else
+            {
                 if (audioSource != null && audioSource.clip != null)
                 {
                     audioSource.Play();
@@ -52,6 +71,15 @@ public class ExitController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (player == null) return;
+
+        if (player.recursoBlue == requiredBlue && player.recursoRed == requiredRed)
+        {
+            spriteRenderer.color = Color.black;
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
+        }
     }
 }

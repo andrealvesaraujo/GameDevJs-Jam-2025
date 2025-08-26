@@ -16,7 +16,7 @@ public class ResourceUIManager : MonoBehaviour
     {
         if (blueResourceText != null) blueResourceText.text = "Blue: 0";
         if (redResourceText != null) redResourceText.text = "Red: 0";
-        if (gameTimerText != null) redResourceText.text = "Time: 00:00";
+        if (gameTimerText != null) gameTimerText.text = "Time: 00:00";
     }
 
 
