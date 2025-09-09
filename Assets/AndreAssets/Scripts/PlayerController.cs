@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     public int recursoBlue = 0;
 
+    private IGenerator currentEnergyGenerator; // Totem atual em colisão
+
     void Start()
     {
         // Initialize the Rigidbody2D component
@@ -59,6 +61,11 @@ public class PlayerController : MonoBehaviour
                 RotatePlayer(0, verticalInput);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TouchEnergyGenerator();
+        }
     }
 
     void FixedUpdate()
@@ -76,5 +83,35 @@ public class PlayerController : MonoBehaviour
         float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
         // Apply the rotation to the player
         transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    public void TouchEnergyGenerator()
+    {
+        if (currentEnergyGenerator != null)
+        {
+            currentEnergyGenerator.ToggleEnergy(this);
+        }
+        else
+        {
+            Debug.Log("Nenhum totem em alcance para ativar.");
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var generator = collision.gameObject.GetComponent<IGenerator>();
+        if (generator != null)
+        {
+            currentEnergyGenerator = generator;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        var generator = collision.gameObject.GetComponent<IGenerator>();
+        if (generator != null && generator == currentEnergyGenerator)
+        {
+            currentEnergyGenerator = null;
+        }
     }
 }

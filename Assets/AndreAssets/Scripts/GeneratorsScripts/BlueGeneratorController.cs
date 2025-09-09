@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueGeneratorController : MonoBehaviour
+public class BlueGeneratorController : MonoBehaviour, IGenerator
 {
-    private bool isCollidingWithPlayer = false;
-    private PlayerController player;
-
+    
     private bool isActive = false;
 
     public Animator anim;
@@ -19,7 +17,7 @@ public class BlueGeneratorController : MonoBehaviour
     {
         anim = GetComponent<Animator>(); // Initializes the animator
         audioSource = GetComponent<AudioSource>();
-        
+
         if (audioSource == null)
         {
             Debug.LogError("AudioSource component not found on this GameObject!");
@@ -30,60 +28,35 @@ public class BlueGeneratorController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    public void ToggleEnergy(PlayerController player)
     {
-        if (other.gameObject.GetComponent<PlayerController>() != null)
+
+        if (player == null) return;
+
+        if (!isActive)
         {
-            Debug.Log("Press Space to toggle the blue resource value");
-            isCollidingWithPlayer = true;
-            player = other.gameObject.GetComponent<PlayerController>();
+            player.recursoBlue++;
+            Debug.Log("recursoBlue: " + player.recursoBlue);
+            isActive = true;
+            anim.SetBool("trigger", true); // Changes the Animator condition "trigger" to true
         }
         else
         {
-            Debug.LogWarning("PlayerController component not found on the colliding object.");
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.GetComponent<PlayerController>() != null)
-        {
-            isCollidingWithPlayer = false;
-            player = null;
-        }
-    }
-
-    private void Update()
-    {
-        if (!isCollidingWithPlayer || player == null) return;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (!isActive)
+            if (player.recursoBlue > 0)
             {
-                player.recursoBlue++;
+                player.recursoBlue--;
                 Debug.Log("recursoBlue: " + player.recursoBlue);
-                isActive = true;
-                anim.SetBool("trigger", true); // Changes the Animator condition "trigger" to true
             }
-            else
-            {
-                if (player.recursoBlue > 0)
-                {
-                    player.recursoBlue--;
-                    Debug.Log("recursoBlue: " + player.recursoBlue);
-                }
-                isActive = false;
-                anim.SetBool("trigger", false); // Changes the Animator condition "trigger" to false
-            }
-            if (audioSource != null && audioSource.clip != null)
-            {
-                audioSource.Play();
-            }
-            else
-            {
-                Debug.LogWarning("AudioSource or AudioClip is missing!");
-            }
+            isActive = false;
+            anim.SetBool("trigger", false); // Changes the Animator condition "trigger" to false
+        }
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource or AudioClip is missing!");
         }
     }
 }
