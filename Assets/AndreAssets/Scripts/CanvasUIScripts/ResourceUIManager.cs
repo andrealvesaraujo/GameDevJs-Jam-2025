@@ -8,9 +8,21 @@ public class ResourceUIManager : MonoBehaviour
     public TextMeshProUGUI redResourceText;
     public TextMeshProUGUI gameTimerText;
 
-    public PlayerController player;
+    private PlayerController player;
 
-    
+    void Awake()
+    {
+        // Procura o Player na cena automaticamente
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerController>();
+            if (player == null)
+            {
+                Debug.LogWarning("Nenhum PlayerController encontrado na cena!");
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +35,21 @@ public class ResourceUIManager : MonoBehaviour
     void Update()
     {
 
-        if (player != null && blueResourceText != null && redResourceText != null && GameTimerController.gameTimerInstance != null) {
+        if (player != null && blueResourceText != null && redResourceText != null && GameTimerController.gameTimerInstance != null)
+        {
             blueResourceText.text = $"Blue: {player.recursoBlue}";
             redResourceText.text = $"Red: {player.recursoRed}";
             gameTimerText.text = $"Time: {GameTimerController.gameTimerInstance.GetFormattedTime()}";
         }
     }
+
+    public void OnActionButtonPressed()
+    {
+        if (player != null)
+        {
+            player.TouchEnergyGenerator();
+        }
+    }
+    
 
 }
