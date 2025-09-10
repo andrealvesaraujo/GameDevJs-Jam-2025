@@ -17,17 +17,34 @@ public class PlayerController : MonoBehaviour
 
     private IGenerator currentEnergyGenerator; // Totem atual em colisão
 
+    private FixedJoystick joystick; // ✅ referência ao joystick prefab
+
+
     void Start()
     {
         // Initialize the Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
+
+        joystick = FindObjectOfType<FixedJoystick>();
+
     }
 
     void Update()
     {
         // Get player input from keyboard or controller
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput;
+        float verticalInput;
+
+        if (joystick != null)
+        {
+                horizontalInput = joystick.Horizontal;
+                verticalInput = joystick.Vertical;
+        }
+        else
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+        }
 
         // Check if diagonal movement is allowed
         if (canMoveDiagonally)
